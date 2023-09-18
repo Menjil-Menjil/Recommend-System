@@ -1,4 +1,6 @@
+# 멘토 추천 시스템
 import pymysql
+import config
 
 VALID_KEYS = [
     'field',
@@ -46,11 +48,11 @@ def get_user_data(user_name):
 
     # Establish the connection
     connection = pymysql.connect(
-        host='menjil-be.cykbbebpgzgm.ap-northeast-2.rds.amazonaws.com',  # usually localhost or an IP address
-        port=12000,
-        user='root',  # your username
-        password='root1234',  # your password
-        database='menjil'  # the database you want to connect to
+        host=config.HOST,  # usually localhost or an IP address
+        port=config.PORT,
+        user=config.USERNAME,  # your username
+        password=config.PW,  # your password
+        database=config.DB  # the database you want to connect to
     )
 
     # Create a cursor object
