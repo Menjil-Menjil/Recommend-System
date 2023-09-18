@@ -1,4 +1,3 @@
-# 멘토 추천 시스템
 import pymysql
 import config
 
