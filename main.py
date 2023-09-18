@@ -42,17 +42,21 @@ FOLLOWING_DATA_KEY = [
 ]
 
 
-def get_user_data(user_name):
-    # 유저 정보 가져 오기.
-
-    # Establish the connection
-    connection = pymysql.connect(
+def make_connection():
+    return pymysql.connect(
         host=config.HOST,  # usually localhost or an IP address
         port=config.PORT,
         user=config.USERNAME,  # your username
         password=config.PW,  # your password
         database=config.DB  # the database you want to connect to
     )
+
+
+def get_user_data(user_name):
+    # 유저 정보 가져 오기.
+
+    # Establish the connection
+    connection = make_connection()
 
     # Create a cursor object
     cursor = connection.cursor()
@@ -93,13 +97,7 @@ def get_followings_data(user_name):
     data = []
 
     # Establish the connection
-    connection = pymysql.connect(
-        host='menjil-be.cykbbebpgzgm.ap-northeast-2.rds.amazonaws.com',  # usually localhost or an IP address
-        port=12000,
-        user='root',  # your username
-        password='root1234',  # your password
-        database='menjil'  # the database you want to connect to
-    )
+    connection = make_connection()
 
     # Create a cursor obje2ct
     cursor = connection.cursor()
@@ -131,13 +129,7 @@ def get_mentor_data():
     data = []
 
     # Establish the connection
-    connection = pymysql.connect(
-        host='menjil-be.cykbbebpgzgm.ap-northeast-2.rds.amazonaws.com',  # usually localhost or an IP address
-        port=12000,
-        user='root',  # your username
-        password='root1234',  # your password
-        database='menjil'  # the database you want to connect to
-    )
+    connection = make_connection()
 
     # Create a cursor obje2ct
     cursor = connection.cursor()
